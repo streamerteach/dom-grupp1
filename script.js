@@ -1,14 +1,29 @@
 window.onload = function() {
-    // Lyssna efter händelser
-}
+    var profiles = document.getElementsByClassName("profile");
+
+    for (var i = 0; i < profiles.length; i++) {
+        profiles[i].addEventListener("mouseover", effectOn);
+        profiles[i].addEventListener("mouseout", effectOff);
+        profiles[i].addEventListener("click", editTitle);
+    }
+};
 var editTitle = function(e) {
-    // Ändra "team-title"
+
+    var titleElement = this.nextElementSibling.nextElementSibling;
+
+  
+    var newTitle = prompt("Enter a new title for " + this.nextElementSibling.textContent + ":");
+
+    if (newTitle) {
+        titleElement.textContent = newTitle;
+    }
 };
 
-function effectOn(id){
-    // Rita en ram runt personen, kanske lite drop shadow?
+function effectOn() {
+    this.classList.add("highlighted");
 }
 
-function effectOff(id){
-    // Stäng av effekten när musen inte längre är ovanför personen
+
+function effectOff() {
+    this.classList.remove("highlighted");
 }
